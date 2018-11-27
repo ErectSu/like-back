@@ -1,0 +1,45 @@
+#home{
+    .loveR-home-header {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        text-align: center;
+        height: 44px;
+        line-height: 44px;
+        box-shadow: 0 0 0.5px #E3E3E4;
+        background: #fff;
+        .city {
+            // display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-size: 14px;
+          color: #111;
+          padding: 0 15px;
+          background: url('/images/down.png') no-repeat 100%;
+          background-size: 10px;
+        }
+        .search {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 40px;
+          height: 44px;
+          margin-right: 44px;
+          background: url('/images/search.png') no-repeat 50%;
+          background-size: 16px;
+        }
+        .cart {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 44px;
+          height: 44px;
+          margin-right: 12px;
+          background: url('/images/cart.png') no-repeat 50%;
+          background-size: 20px;
+        }
+    }
+}
