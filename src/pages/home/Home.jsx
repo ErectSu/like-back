@@ -34,10 +34,22 @@ export default class Home extends Component{
         fetch(API.BANNER_API)
         .then(function(response) {
             return response.json()
-        }).then(function(json) {
+        }).then((json)=> {
             console.log('parsed json', json)
-            _that.setState({
+            this.setState({
                 mobilesos:json.data
+            },()=>{
+                new window.Swiper('.swiper-container01',{
+                    autoplay:true,
+                    loop:true,
+                    pagination:{
+                        el:'.swiper-pagination01'
+                    }
+                });
+                new window.Swiper('.swiper-container02',{
+                    autoplay:false,
+                    loop:false
+                })
             })
             
         }).catch(function(ex) {
