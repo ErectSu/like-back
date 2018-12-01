@@ -2,13 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 export default function HomeUI(props){
     console.log('props.dataSlide');
-    console.log(props.dataSlide);
+    console.log(props.cityDef);
     if(props.dataSlide.length > 0){
     return (
         <div className='page' id='home'>
             <div className="loveR-home-header">
                 {/* <NavLink to={`/city`} className="city">{ props.cityName }</NavLink> */}
-                <NavLink to='/home/city' className="city">111</NavLink>
+                <NavLink to='/home/city' className="city">{props.cityDef.city}</NavLink>
                 <span className="search"></span>
                 <span className="cart"></span>
             </div>
@@ -20,7 +20,7 @@ export default function HomeUI(props){
                             {
                                 props.dataSlide[0].items.map((item,index)=>{
                                     return (
-                                        <div className="swiper-slide" key={item.id}><img src={item.imageUrl} alt=""/></div>
+                                        <div className="swiper-slide" key={index}><img src={item.imageUrl} alt=""/></div>
                                     )
                                 })
                             }
@@ -40,7 +40,7 @@ export default function HomeUI(props){
                         {
                             props.dataSlide[2].items.map((item,index)=>{
                                 return (
-                                    <a>
+                                    <a key={index}>
                                     <img src={item.imageUrl} alt=""/>
                                     <span>{item.title}</span>
                                     </a>
@@ -100,7 +100,7 @@ export default function HomeUI(props){
                         {
                             props.dataSlide[7].items.map((item,index)=>{
                                 return (
-                                    <a>
+                                    <a key={index}>
                                         <img src={item.imageUrl} alt=""/>
                                     </a>
                                 )
@@ -111,7 +111,7 @@ export default function HomeUI(props){
                         {
                             props.dataSlide[8].items.map((item,index)=>{
                                 return (
-                                    <a>
+                                    <a key={index}>
                                         <img src={item.imageUrl} alt=""/>
                                     </a>
                                 )
@@ -131,7 +131,7 @@ export default function HomeUI(props){
                         {
                             props.dataSlide[10].items.map((item,index)=>{
                                 return (
-                                    <a>
+                                    <a key={index}>
                                         <img src={item.imageUrl} alt=""/>
                                     </a>
                                 )

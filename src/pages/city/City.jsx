@@ -3,18 +3,22 @@ import './City.scss';
 import CityUI from './CityUI';
 import API from '../../api'
 import 'whatwg-fetch'
+import store from '../../store'
+import './City.scss'
 export default class Detail extends Component{
 
     constructor(){
         super();
         this.state={
-            city:[]
+            city:[],
+            listCity:[]
         }
     }
     render(){
-        let {city}=this.state;
+        // console.log(store.getState());
+        let {city,listCity}=this.state;
         return (
-            <CityUI dataCity={city}/>
+            <CityUI dataCity={city} listData={listCity}/>
         );
     }
     
@@ -23,8 +27,23 @@ export default class Detail extends Component{
         fetch(API.CITY_API)
         .then(function(response) {
             return response.json()
-        }).then(function(json) {
-            console.log('city', json)
+        }).then((json)=> {
+            // console.log('city', json);
+            var list=json.data.map((item,index)=>{
+                // console.log(item);
+                if(item.isHot===true){
+                    return item.name;
+                }else{
+                    return '';
+                }
+            })
+            list=list.filter(item=>{
+                return item!='';
+            })
+            this.setState({
+                listCity:list
+            })
+            console.log(list);
             let cityMap = {};
             json.data.map((item)=>{
                     // 取得首字母
@@ -54,6 +73,7 @@ export default class Detail extends Component{
                         value: cityMap[letter]
                     }
                 })
+                // console.log(newData);
                 _that.setState({
                     city:newData
                 })

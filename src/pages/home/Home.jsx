@@ -16,9 +16,10 @@ export default class Home extends Component{
         }
     }
     render(){
+        console.log(store.getState());
         let {mobilesos}=this.state;
         return (
-            <HomeUI dataSlide={mobilesos}></HomeUI>
+            <HomeUI dataSlide={mobilesos} cityDef={store.getState()}></HomeUI>
         );
     }
     changeAction(ev){
@@ -39,14 +40,14 @@ export default class Home extends Component{
             this.setState({
                 mobilesos:json.data
             },()=>{
-                new window.Swiper('.swiper-container01',{
+                let swip1=new window.Swiper('.swiper-container01',{
                     autoplay:true,
                     loop:true,
                     pagination:{
                         el:'.swiper-pagination01'
                     }
                 });
-                new window.Swiper('.swiper-container02',{
+                let swip2=new window.Swiper('.swiper-container02',{
                     autoplay:false,
                     loop:false
                 })
