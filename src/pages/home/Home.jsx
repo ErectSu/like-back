@@ -4,11 +4,14 @@ import HomeUI from './HomeUI';
 import './Home.scss'
 import API from '../../api'
 import 'whatwg-fetch'
+
+import { connect } from 'react-redux';
+
 // console.log(fetch);
 
 
-
-export default class Home extends Component{
+// export default 
+class Home extends Component{
     constructor(){
         super();
         this.state={
@@ -19,7 +22,7 @@ export default class Home extends Component{
         console.log(store.getState());
         let {mobilesos}=this.state;
         return (
-            <HomeUI dataSlide={mobilesos} cityDef={store.getState()}></HomeUI>
+            <HomeUI dataSlide={mobilesos} cityDef={store.getState()} pop={this.props}></HomeUI>
         );
     }
     changeAction(ev){
@@ -31,6 +34,7 @@ export default class Home extends Component{
         console.log(this.state.value);
     }
     componentDidMount(){
+        console.log(this.props);
         let _that=this;
         fetch(API.BANNER_API)
         .then(function(response) {
@@ -58,3 +62,28 @@ export default class Home extends Component{
         })
     }
 }
+
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+    //   list: state.Home.list,
+    //   lbt: state.Home.lbt
+    a:'001'
+    }
+  }
+  
+  
+  const mapDispatchToProps = (dispatch) => {
+    console.log(dispatch);
+    return {
+      onClick: (id) => {
+        window.location.href = '/home/shape?type='+id
+      },
+      goDetail: (id) => {
+        window.location.href = '/home/detail?'+id
+      }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Home);

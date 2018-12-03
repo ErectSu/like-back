@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 export default function HomeUI(props){
     console.log('props.dataSlide');
-    console.log(props.cityDef);
+    console.log(props);
     if(props.dataSlide.length > 0){
     return (
         <div className='page' id='home'>
@@ -39,8 +39,9 @@ export default function HomeUI(props){
                     
                         {
                             props.dataSlide[2].items.map((item,index)=>{
+                                // console.log(item);
                                 return (
-                                    <a key={index}>
+                                    <a onClick = {()=>{props.pop.onClick(item.urlType)}} key={index}>
                                     <img src={item.imageUrl} alt=""/>
                                     <span>{item.title}</span>
                                     </a>
@@ -51,7 +52,7 @@ export default function HomeUI(props){
                     
                 </div>
                 <div className="item">
-                        <a>
+                        <a onClick={()=>{props.pop.onClick(4)}}>
                             <img src={props.dataSlide[3].items[0].imageUrl} alt=""/>
                         </a>
                 </div>
